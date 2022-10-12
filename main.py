@@ -71,10 +71,14 @@ def deal_card():
     return random.choice(cards)
 
 def calculate_score(nums_list):
-    score = 0
-    for i in range(0, len(nums_list)):
-        score += nums_list[i]
-    return score
+    ace = 11
+    if ace in nums_list and 10 in nums_list:
+        return 0
+    else:
+        score = 0
+        for i in range(0, len(nums_list)):
+            score += nums_list[i]
+        return score
         
 def black_jack():
     while_cont = True
@@ -92,10 +96,11 @@ def black_jack():
             computer_cards.append(deal_card())
         computer_current_score = calculate_score(computer_cards)
         print(f"Computer's first card: {computer_cards[0]}")
-        card_condition = input("Type 'y' to get another card, type 'n' to pass: ")
-        if card_condition == 'y':
-            users_random_cards.append(random.choice(cards))
-        elif card_condition == 'n':
-                computer_choice.append(random.choice(cards))
+        
+        #card_condition = input("Type 'y' to get another card, type 'n' to pass: ")
+        #if card_condition == 'y':
+        #    users_random_cards.append(random.choice(cards))
+        #elif card_condition == 'n':
+        #        computer_choice.append(random.choice(cards))
             
 black_jack()
